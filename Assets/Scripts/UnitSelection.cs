@@ -3,6 +3,7 @@ using UnityEngine;
 public class UnitSelection : MonoBehaviour
 {
     public static UnitSelection Instance;
+    public Units selectedUnit;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class UnitSelection : MonoBehaviour
 
     void Update()
     {
-        if (TurnManager.Instance.isPlayerTurn)
+        if (!TurnManager.Instance.isPlayerTurn)
         {
             return;
         }
@@ -31,17 +32,29 @@ public class UnitSelection : MonoBehaviour
                 Units units = hit.collider.GetComponent<Units>();
                 if (units != null && units.isFriendly && !units.hasActed)
                 {
-                    SelectUnit();
-                    Debug.Log("soy una unidad");
+                    SelectUnit(units);
+                    Debug.Log("soy una unidad" + units.name + " seleccionada");
                 }
-                else Debug.Log("no soy una unidad");
+                else
+                {
+                    DeselectUnit();
+                    Debug.Log("no soy una unidad");
+                }
             }
         }
     }
-    
-    private void SelectUnit()
+
+    private void SelectUnit(Units units)
     {
-        throw new System.NotImplementedException();
+        selectedUnit = units;
         // Implement unit selection logic here
+    }
+    
+    public void DeselectUnit()
+    {
+        if(selectedUnit != null)
+        {
+            selectedUnit = null;
+        }
     }
 }
