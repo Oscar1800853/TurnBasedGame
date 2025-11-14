@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UiUnitSelectionToggle : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class UiUnitSelectionToggle : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) 
+        {
+            return;        
+        }
+
         string unitSelection = UnitSelection.Instance.selectedUnit != null
             ? UnitSelection.Instance.selectedUnit.name
             : null;
