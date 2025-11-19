@@ -2,17 +2,31 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    bool isOnLoS;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Shoot()
     {
-        
+        isOnLoS();
     }
 
-    // Update is called once per frame
-    void Update()
+    bool isOnLoS(Vector3 enemyPosition, float weaponRange)
     {
-        
+        bool isLos;
+
+        if (Physics.Raycast(transform.position, enemyTransform.position, out hit, 1000f))
+        {
+            Character character = hit.collider.GetComponent<Character>();
+
+                if (character != null)
+                {
+                    return true;
+                }
+                else
+                {
+                   
+                }
+        }
+        return false;
     }
+
+
 }
