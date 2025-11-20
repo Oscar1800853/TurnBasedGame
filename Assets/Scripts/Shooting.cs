@@ -3,26 +3,29 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
-    public void Shoot()
+    public void Shoot(Vector3 enemyPosition, float weaponRange) // Method to shoot at an enemy
     {
-        isOnLoS();
+        if (isOnLoS(enemyPosition, weaponRange)) // Check line of sight
+        {
+            Debug.Log("Enemigo en linea de tiro");
+        }
+        else
+        {
+            Debug.Log("Enemigo no está en linea de tiro");
+        }
     }
 
-    bool isOnLoS(Vector3 enemyPosition, float weaponRange)
+    public bool isOnLoS(Vector3 enemyPosition, float weaponRange) // Check if enemy is in line of sight
     {
-        bool isLos;
+        RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, enemyTransform.position, out hit, 1000f))
+        if (Physics.Raycast(transform.position, enemyPosition, out hit, weaponRange))
         {
             Character character = hit.collider.GetComponent<Character>();
 
                 if (character != null)
                 {
                     return true;
-                }
-                else
-                {
-                   
                 }
         }
         return false;

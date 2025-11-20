@@ -8,10 +8,14 @@ public class Units : MonoBehaviour
     bool hasAttacked = false;
     public bool isFriendly;
     ClickToMove clickToMove;
+    Shooting shooting;
 
     private void Awake()
     {
         clickToMove = GetComponent<ClickToMove>();
+        clickToMove.enabled = false;
+        shooting = GetComponent<Shooting>();
+        shooting.enabled = false;
     }
     public void Run()
     {
@@ -34,10 +38,20 @@ public class Units : MonoBehaviour
 
     public void Attack()
     {
-        if (hasActed)
+        if (hasActed || hasAttacked)
         {
             return;
         }
+        
+        if (!isFriendly)
+        {
+            shooting.enabled = true;
+        }
+        else
+        {
+            Debug.Log("Unidad enemiga atacando");
+        }
+        
         
         Debug.Log(characterName + " usa la acción atacar ");
         FinishAttack();
