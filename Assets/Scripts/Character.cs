@@ -26,12 +26,14 @@ public class Character : MonoBehaviour
         
     }
 
-    void TakeDamage(float damageAmount)
+    protected void TakeDamage(float damageAmount)
     {
         float finalDamage = damageAmount - armorValue;
         currtentHealth -= damageAmount;
         IsAlive();
     }
+
+    
 
     void IsAlive()
     {

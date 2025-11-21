@@ -9,6 +9,7 @@ public class Units : MonoBehaviour
     public bool isFriendly;
     ClickToMove clickToMove;
     Shooting shooting;
+    GameObject targetSelection;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class Units : MonoBehaviour
         if (!isFriendly)
         {
             shooting.enabled = true;
+            targetSelection.Setactive(true);
         }
         else
         {

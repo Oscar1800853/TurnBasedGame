@@ -707,7 +707,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4995953140121755298, guid: 918778b321763d5439bf74b697332306, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 281623194}
   m_SourcePrefab: {fileID: 100100000, guid: 918778b321763d5439bf74b697332306, type: 3}
 --- !u!1 &228423396
 GameObject:
@@ -718,6 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228423397}
+  - component: {fileID: 228423398}
   m_Layer: 5
   m_Name: TargetButtons
   m_TagString: Untagged
@@ -746,6 +750,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &228423398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228423396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70436aedf3746a4c874823ede81b280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  target_1: {fileID: 304927712}
+  target_2: {fileID: 281623189}
+  characterShooting: {fileID: 847989823}
 --- !u!1 &258078370
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +932,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &281623189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4995953140121755298, guid: 918778b321763d5439bf74b697332306, type: 3}
+  m_PrefabInstance: {fileID: 198355255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &281623194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281623189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abfc6cf8ebe16943958dd130ff7871b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
+--- !u!1 &304927712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4995953140121755298, guid: 918778b321763d5439bf74b697332306, type: 3}
+  m_PrefabInstance: {fileID: 8379981170164413585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307598304
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +1036,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 307598307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 228423398}
+        m_TargetAssemblyTypeName: TargetSelectionAttack, Assembly-CSharp
+        m_MethodName: ShootTarget2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &307598307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,7 +1717,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 478101804464716202, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
   m_PrefabInstance: {fileID: 2497477648477155941}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 847989823}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d9ef239e4d215f4fa2931b4e4c167eb, type: 3}
@@ -2827,6 +2880,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &847989823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7117335640645906143, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
+  m_PrefabInstance: {fileID: 2497477648477155941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &863552845
 GameObject:
   m_ObjectHideFlags: 0
@@ -3463,12 +3521,24 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 380602898389105114, guid: 918778b321763d5439bf74b697332306, type: 3}
   m_PrefabInstance: {fileID: 8379981170164413585}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 304927712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d9ef239e4d215f4fa2931b4e4c167eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units
+--- !u!114 &998038945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304927712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abfc6cf8ebe16943958dd130ff7871b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
 --- !u!1 &1029745268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3621,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1029745271}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 228423398}
+        m_TargetAssemblyTypeName: TargetSelectionAttack, Assembly-CSharp
+        m_MethodName: ShootTarget1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1029745271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,7 +5300,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4995953140121755298, guid: 918778b321763d5439bf74b697332306, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 998038945}
   m_SourcePrefab: {fileID: 100100000, guid: 918778b321763d5439bf74b697332306, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
