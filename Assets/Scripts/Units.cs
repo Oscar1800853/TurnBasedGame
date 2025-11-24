@@ -47,7 +47,7 @@ public class Units : MonoBehaviour
         if (!isFriendly)
         {
             shooting.enabled = true;
-            targetSelection.Setactive(true);
+            shooting.Shoot(targetSelection.transform.position, 10f);
         }
         else
         {
@@ -91,4 +91,5 @@ public class Units : MonoBehaviour
         hasActed = true;
         TurnManager.Instance.CheckEndTurn();
     }
+
 }
