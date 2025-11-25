@@ -5785,6 +5785,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2abfc6cf8ebe16943958dd130ff7871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCharacter
+--- !u!114 &281623196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 380602898389105114, guid: 918778b321763d5439bf74b697332306, type: 3}
+  m_PrefabInstance: {fileID: 198355255}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281623189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9ef239e4d215f4fa2931b4e4c167eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Units
 --- !u!1 &304927712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4995953140121755298, guid: 918778b321763d5439bf74b697332306, type: 3}
@@ -7513,6 +7524,7 @@ MonoBehaviour:
   isPlayerTurn: 1
   enemyUnits:
   - {fileID: 998038941}
+  - {fileID: 281623196}
   playerUnits:
   - {fileID: 472678928}
   - {fileID: 1273676222}
@@ -9075,6 +9087,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a5211df1d23042547a0bf50c0878ba67, type: 2}
   weaponList:
   - {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
+  targetSelectionPanel: {fileID: 0}
 --- !u!1 &1402221883
 GameObject:
   m_ObjectHideFlags: 0

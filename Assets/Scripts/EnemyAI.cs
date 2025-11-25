@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
         {
             return;
         }
-        if(TurnManager.instance.isPlayerTurn)
+        if(TurnManager.Instance.isPlayerTurn)
         {
             //unit.hasActed = true;
             return;
@@ -73,7 +73,7 @@ public class EnemyAI : MonoBehaviour
     {
       Units closest= null;
       float closestDistance = Mathf.Infinity;
-      foreach(Units playerUnit in TurnManager.instance.playerUnits)
+      foreach(Units playerUnit in TurnManager.Instance.playerUnits)
       {
         float distance = Vector3.Distance(transform.position, playerUnit.transform.position);
         if(distance < closestDistance && distance <= visionRange)

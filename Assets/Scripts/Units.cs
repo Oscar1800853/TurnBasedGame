@@ -10,11 +10,14 @@ public class Units : MonoBehaviour
     ClickToMove clickToMove;
     Shooting shooting;
     GameObject targetSelection;
+    PlayerCharacter playerCharacter;
 
     private void Awake()
     {
         clickToMove = GetComponent<ClickToMove>();
         clickToMove.enabled = false;
+        playerCharacter = GetComponent<PlayerCharacter>();
+
         shooting = GetComponent<Shooting>();
         shooting.enabled = false;
     }
@@ -46,6 +49,7 @@ public class Units : MonoBehaviour
         
         if (!isFriendly)
         {
+            playerCharacter.targetSelectionPanel.SetActive(true);
             shooting.enabled = true;
             shooting.Shoot(targetSelection.transform.position, 10f);
         }
@@ -84,12 +88,15 @@ public class Units : MonoBehaviour
     
     public void FinishAttack()
     {
+        playerCharacter.targetSelectionPanel.SetActive(false);
         hasActed = true;
+
     }
     public void FinishAction()
     {
         hasActed = true;
         TurnManager.Instance.CheckEndTurn();
+        
     }
 
 }
