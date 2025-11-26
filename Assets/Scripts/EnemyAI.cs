@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     private Shooting shooting;
     [SerializeField]  float visionRange = 10f;
     private float attackRange;
-    NavMeshAgent agent;
+    UnityEngine.AI.NavMeshAgent agent;
     
     void Awake()
     {
