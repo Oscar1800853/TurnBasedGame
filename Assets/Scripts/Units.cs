@@ -4,7 +4,7 @@ public class Units : MonoBehaviour
 {
     [SerializeField] public string characterName;
     public bool hasActed = true;
-    bool hasMoved = false;
+    public bool hasMoved = false;
     bool hasAttacked = false;
     public bool isFriendly;
     ClickToMove clickToMove;

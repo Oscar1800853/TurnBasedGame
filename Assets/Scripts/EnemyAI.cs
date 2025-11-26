@@ -10,6 +10,8 @@ public class EnemyAI : MonoBehaviour
     private Shooting shooting;
     [SerializeField]  float visionRange = 10f;
     private float attackRange;
+    NavMeshAgent agent;
+    
     void Awake()
     {
         units = GetComponent<Units>();
@@ -38,6 +40,9 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator DoEnemyTurn()
     {
         Units target = FindClosestPlayerUnit();
+
+        //1. Si no detecta ningun jugador cerca, termina el turno
+
         if (target == null)
         {
             Debug.Log(units.characterName + ": No player units found, skipping turn.");
@@ -45,10 +50,26 @@ public class EnemyAI : MonoBehaviour
             yield break;
         }
 
+        //2. Esta en la linea de vision y en rango de ataque
+
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        
         if (distanceToTarget <= attackRange && hasLineOfSight(target))
         {
            yield return AttackTarget(target);  
+        }
+        else //3. Muevo al personaje para que este cerca para atacar o dentro de la linea de vision
+        {
+            yield return MoveTowardsTarget(target.transform.position);
+
+            //4.Vuelvo  a disparar al personaje
+
+            distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        
+            if (distanceToTarget <= attackRange && hasLineOfSight(target))
+            {
+                yield return AttackTarget(target);  
+            }
         }
 
     }
@@ -62,9 +83,30 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator AttackTarget(Units target)
     {
+        Debug.Log(units.characterName + " is attacking " + target.characterName);
+
+        Vector3 lookDirection = target.transform.position - transform.position;
+        lookDirection.y = 0;
+        if(lookDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(lookDirection);
+        }
+
         shooting.Shoot(target.transform.position, attackRange);
         units.hasActed = true;
+
         yield return new WaitForSeconds(1f); // Espera 1 segundo para simular el tiempo de ataque
+        
+    }
+
+    private IEnumerator MoveTowardsTarget(Vector3 targetPosition)
+    {
+        Debug.Log(units.characterName + " is moving towards target.");
+
+        agent.destination = targetPosition;
+        yield return new WaitForSeconds(5); // Espera 5 segundos para simular el tiempo de movimiento
+        units.FinishMovement();
+
     }
 
 
