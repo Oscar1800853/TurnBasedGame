@@ -18,24 +18,26 @@ public class ClickToMove : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        agent.destination = destinationDummie.position;
-        agent.updatePosition = false;
+        if (agent != null)
+        {
+            agent.ResetPath();
+            agent.updatePosition = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
+            Debug.Log("[ClickToMove] Botón derecho presionado");
             HandleClick();
             Units units = GetComponent<Units>();
             units.FinishMovement();
         }
 
-        animator.SetFloat("ForwardMovement", agent.velocity.magnitude);
-        
+        if (animator != null && agent != null)
+            animator.SetFloat("ForwardMovement", agent.velocity.magnitude);
     }
 
     private void HandleClick()
@@ -54,6 +56,9 @@ public class ClickToMove : MonoBehaviour
     
     private void OnAnimatorMove()
     {
+        if (animator == null || agent == null) return;
+        if (agent.updatePosition) return;
+        
         Vector3 position = animator.rootPosition;
         position.y = agent.nextPosition.y;
         transform.position = position;

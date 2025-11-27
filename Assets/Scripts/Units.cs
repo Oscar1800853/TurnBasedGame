@@ -15,11 +15,20 @@ public class Units : MonoBehaviour
     private void Awake()
     {
         clickToMove = GetComponent<ClickToMove>();
-        clickToMove.enabled = false;
+        if (clickToMove != null)
+            clickToMove.enabled = false;
+        else
+            Debug.LogWarning("ClickToMove no encontrado en " + gameObject.name);
+
         playerCharacter = GetComponent<PlayerCharacter>();
+        if (playerCharacter == null)
+            Debug.LogWarning("PlayerCharacter no encontrado en " + gameObject.name);
 
         shooting = GetComponent<Shooting>();
-        shooting.enabled = false;
+        if (shooting != null)
+            shooting.enabled = false;
+        else
+            Debug.LogWarning("Shooting no encontrado en " + gameObject.name);
     }
     public void Run()
     {
@@ -84,13 +93,13 @@ public class Units : MonoBehaviour
     {
         clickToMove.enabled = false;
         hasActed = true;
+        TurnManager.Instance.CheckEndTurn();
     }
     
     public void FinishAttack()
     {
-        playerCharacter.targetSelectionPanel.SetActive(false);
         hasActed = true;
-
+        TurnManager.Instance.CheckEndTurn();
     }
     public void FinishAction()
     {

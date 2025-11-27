@@ -13,7 +13,6 @@ public class PlayerCharacter : Character
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        targetSelectionPanel.SetActive(false); 
         equippedWeapon = weaponList[0];
         equippedEquipment = equipmentList[0];
     }

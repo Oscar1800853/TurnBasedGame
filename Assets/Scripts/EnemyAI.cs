@@ -9,13 +9,14 @@ public class EnemyAI : MonoBehaviour
     private Units units;
     private Shooting shooting;
     [SerializeField]  float visionRange = 10f;
-    private float attackRange;
+    [SerializeField] float attackRange = 5f;
     UnityEngine.AI.NavMeshAgent agent;
     
     void Awake()
     {
         units = GetComponent<Units>();
         shooting = GetComponent<Shooting>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     void Update()
