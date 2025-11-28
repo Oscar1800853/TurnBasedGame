@@ -660,13 +660,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 265714735978716315, guid: 918778b321763d5439bf74b697332306, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 380602898389105114, guid: 918778b321763d5439bf74b697332306, type: 3}
       propertyPath: hasActed
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4995953140121715330, guid: 918778b321763d5439bf74b697332306, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.25
+      value: -17.08
       objectReference: {fileID: 0}
     - target: {fileID: 4995953140121715330, guid: 918778b321763d5439bf74b697332306, type: 3}
       propertyPath: m_LocalPosition.y
@@ -674,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4995953140121715330, guid: 918778b321763d5439bf74b697332306, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.99
+      value: -5.08
       objectReference: {fileID: 0}
     - target: {fileID: 4995953140121715330, guid: 918778b321763d5439bf74b697332306, type: 3}
       propertyPath: m_LocalRotation.w
@@ -708,6 +712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenadier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9049595165151008173, guid: 918778b321763d5439bf74b697332306, type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 198645934}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6637,9 +6645,12 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7540339337280500400, guid: 2abb45b3833c971428a051ebd7155b27, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 1273676223}
+      addedObject: {fileID: 1273676236}
     - targetCorrespondingSourceObject: {fileID: 7540339337280500400, guid: 2abb45b3833c971428a051ebd7155b27, type: 3}
       insertIndex: 5
+      addedObject: {fileID: 1273676235}
+    - targetCorrespondingSourceObject: {fileID: 7540339337280500400, guid: 2abb45b3833c971428a051ebd7155b27, type: 3}
+      insertIndex: 6
       addedObject: {fileID: 1273676229}
   m_SourcePrefab: {fileID: 100100000, guid: 2abb45b3833c971428a051ebd7155b27, type: 3}
 --- !u!1 &566412849 stripped
@@ -7751,6 +7762,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickToMove
   moveSpeed: 0
   destinationDummie: {fileID: 974087715}
+--- !u!114 &847989833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847989823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45998f91c5d233f4e993cfbfcef68f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  characterName: 
+  maxHealth: 0
+  baseAttackDamage: 0
+  armorValue: 0
+  actualWeapon: {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
+--- !u!114 &847989834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847989823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772d7bd7239299b4f88aee3b708caaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
+  characterName: 
+  maxHealth: 0
+  baseAttackDamage: 0
+  armorValue: 0
+  actualWeapon: {fileID: 0}
+  equipmentList:
+  - {fileID: 11400000, guid: a5211df1d23042547a0bf50c0878ba67, type: 2}
+  weaponList:
+  - {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
+  targetSelectionPanel: {fileID: 0}
+--- !u!114 &847989835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847989823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5da41d2fae06c47a0a3d823dc73d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
+  particleSystem: {fileID: 198645934}
+  weapon: {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
 --- !u!1 &863552845
 GameObject:
   m_ObjectHideFlags: 0
@@ -8393,6 +8457,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9ef239e4d215f4fa2931b4e4c167eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units
+--- !u!114 &998038949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304927712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45998f91c5d233f4e993cfbfcef68f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  characterName: 
+  maxHealth: 0
+  baseAttackDamage: 0
+  armorValue: 0
+  actualWeapon: {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
 --- !u!1 &1029745268
 GameObject:
   m_ObjectHideFlags: 0
@@ -9073,7 +9154,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9ef239e4d215f4fa2931b4e4c167eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units
---- !u!114 &1273676223
+--- !u!114 &1273676229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566412849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5da41d2fae06c47a0a3d823dc73d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
+  particleSystem: {fileID: 198645934}
+  weapon: {fileID: 0}
+--- !u!114 &1273676235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566412849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45998f91c5d233f4e993cfbfcef68f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  characterName: 
+  maxHealth: 0
+  baseAttackDamage: 0
+  armorValue: 0
+  actualWeapon: {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
+--- !u!114 &1273676236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9089,24 +9201,12 @@ MonoBehaviour:
   maxHealth: 0
   baseAttackDamage: 0
   armorValue: 0
+  actualWeapon: {fileID: 0}
   equipmentList:
   - {fileID: 11400000, guid: a5211df1d23042547a0bf50c0878ba67, type: 2}
   weaponList:
   - {fileID: 11400000, guid: e62f317e73b0b2944adac2796f813bf0, type: 2}
   targetSelectionPanel: {fileID: 0}
---- !u!114 &1273676229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566412849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d5da41d2fae06c47a0a3d823dc73d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shooting
-  particleSystem: {fileID: 198645934}
 --- !u!1 &1402221883
 GameObject:
   m_ObjectHideFlags: 0
@@ -10113,8 +10213,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7117335640645906143, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 847989834}
+    - targetCorrespondingSourceObject: {fileID: 7117335640645906143, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
       insertIndex: 3
+      addedObject: {fileID: 847989833}
+    - targetCorrespondingSourceObject: {fileID: 7117335640645906143, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
+      insertIndex: 5
       addedObject: {fileID: 847989828}
+    - targetCorrespondingSourceObject: {fileID: 7117335640645906143, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 847989835}
   m_SourcePrefab: {fileID: 100100000, guid: cf050b42f338e7d49bf64cf1246be2e3, type: 3}
 --- !u!1001 &8379981170164413585
 PrefabInstance:
@@ -10124,6 +10233,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 265714735978716315, guid: 918778b321763d5439bf74b697332306, type: 3}
+      propertyPath: attackRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 380602898389105114, guid: 918778b321763d5439bf74b697332306, type: 3}
       propertyPath: hasActed
       value: 0
@@ -10172,10 +10285,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenadier
       objectReference: {fileID: 0}
+    - target: {fileID: 9049595165151008173, guid: 918778b321763d5439bf74b697332306, type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 198645934}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4995953140121755298, guid: 918778b321763d5439bf74b697332306, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 998038949}
   m_SourcePrefab: {fileID: 100100000, guid: 918778b321763d5439bf74b697332306, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]  float visionRange = 10f;
     [SerializeField] float attackRange = 5f;
     UnityEngine.AI.NavMeshAgent agent;
+    private bool isTurnActive = false; // Flag para evitar múltiples corrutinas
     
     void Awake()
     {
@@ -28,11 +29,15 @@ public class EnemyAI : MonoBehaviour
         if(TurnManager.Instance.isPlayerTurn)
         {
             //unit.hasActed = true;
+            isTurnActive = false;
+            if(agent.enabled)
+                agent.ResetPath(); // Detener movimiento cuando es turno del jugador
             return;
         }
-        if(!units.hasActed)
+        if(!units.hasActed && !isTurnActive)
         {
             // Lógica simple de IA: buscar la unidad enemiga más cercana y disparar si está en línea de visión
+            isTurnActive = true;
             StartCoroutine(DoEnemyTurn());
         }
     }
@@ -47,8 +52,9 @@ public class EnemyAI : MonoBehaviour
         if (target == null)
         {
             Debug.Log(units.characterName + ": No player units found, skipping turn.");
+            isTurnActive = false;
             units.FinishAction();
-            yield break;
+            yield break; 
         }
 
         //2. Esta en la linea de vision y en rango de ataque
@@ -73,6 +79,10 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
+        // Limpiar el flag y detener movimiento al terminar el turno
+        isTurnActive = false;
+        if(agent.enabled)
+            agent.ResetPath();
     }
 
 
@@ -106,6 +116,8 @@ public class EnemyAI : MonoBehaviour
 
         agent.destination = targetPosition;
         yield return new WaitForSeconds(5); // Espera 5 segundos para simular el tiempo de movimiento
+        
+        agent.ResetPath(); // Detener el agente después del movimiento
         units.FinishMovement();
 
     }

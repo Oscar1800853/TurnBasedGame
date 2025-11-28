@@ -60,7 +60,7 @@ public class Units : MonoBehaviour
         {
             playerCharacter.targetSelectionPanel.SetActive(true);
             shooting.enabled = true;
-            shooting.Shoot(targetSelection.transform.position, 10f);
+            //shooting.Shoot(targetSelection.transform.position, 10f);
         }
         else
         {
